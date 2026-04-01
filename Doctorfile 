@@ -1,0 +1,17 @@
+# Use a lightweight Python image
+FROM python:3.9-slim
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Install necessary libraries
+RUN pip install fastapi uvicorn
+
+# Copy your script into the container
+COPY inference.py .
+
+# Expose the port (8000 is standard for FastAPI)
+EXPOSE 8000
+
+# Command to run the app
+CMD ["python", "inference.py"]
